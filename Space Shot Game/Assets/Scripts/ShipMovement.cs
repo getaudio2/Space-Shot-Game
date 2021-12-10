@@ -10,6 +10,7 @@ public class ShipMovement : MonoBehaviour
     bool moveDown;
     bool moveLeft;
     bool moveRight;
+    bool slowDown;
 
 
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class ShipMovement : MonoBehaviour
         moveDown = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
         moveLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
         moveRight = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
+        slowDown = Input.GetKey(KeyCode.LeftShift);
     }
 
     private void FixedUpdate()
@@ -32,6 +34,10 @@ public class ShipMovement : MonoBehaviour
         Vector2 pos = transform.position;
 
         float moveAmount = moveSpeed * Time.fixedDeltaTime;
+        if (slowDown)
+        {
+            moveAmount /= 2;
+        }
         Vector2 move = Vector2.zero;
 
         if (moveUp)
@@ -62,6 +68,26 @@ public class ShipMovement : MonoBehaviour
         }
 
         pos += move;
+
+        if (pos.x <= -5f)
+        {
+            pos.x = -5f;
+        }
+
+        if (pos.x >= 11.5f)
+        {
+            pos.x = 11.5f;
+        }
+
+        if (pos.y >= 5f)
+        {
+            pos.y = 5f;
+        }
+
+        if (pos.y <= -3.5f)
+        {
+            pos.y = -3.5f;
+        }
 
         transform.position = pos;
     }
