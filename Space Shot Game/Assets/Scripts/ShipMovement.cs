@@ -74,9 +74,9 @@ public class ShipMovement : MonoBehaviour
             pos.x = -5.3f;
         }
 
-        if (pos.x >= 11.5f)
+        if (pos.x >= 12.5f)
         {
-            pos.x = 11.5f;
+            pos.x = 12.5f;
         }
 
         if (pos.y >= 5f)
