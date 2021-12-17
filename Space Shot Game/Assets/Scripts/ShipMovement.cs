@@ -81,25 +81,25 @@ public class ShipMovement : MonoBehaviour
 
         pos += move;
 
-        /*if (pos.x <= -5.3f)
+        if (pos.x <= -8.3f)
         {
-            pos.x = -5.3f;
+            pos.x = -8.3f;
         }
 
-        if (pos.x >= 11.5f)
+        if (pos.x >= 8.8f)
         {
-            pos.x = 11.5f;
+            pos.x = 8.8f;
         }
 
-        if (pos.y >= 5f)
+        if (pos.y >= 4.8f)
         {
-            pos.y = 5f;
+            pos.y = 4.8f;
         }
 
-        if (pos.y <= -3.5f)
+        if (pos.y <= -4.8f)
         {
-            pos.y = -3.5f;
-        }*/
+            pos.y = -4.8f;
+        }
 
         transform.position = pos;
     }
