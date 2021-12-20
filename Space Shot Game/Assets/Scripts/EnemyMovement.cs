@@ -6,6 +6,11 @@ public class EnemyMovement : MonoBehaviour
 {
     public float moveSpeed = 5;
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log("hit detected");
+        Destroy(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
