@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class Destructable : MonoBehaviour
 {
-    public float moveSpeed = 5;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,15 +16,14 @@ public class EnemyMovement : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
+    private void OnTriggerEnter2D(Collider2D collision) 
     {
-        Vector2 pos = transform.position;
-        pos.x -= moveSpeed * Time.fixedDeltaTime;
-        if (pos.x < -10)
+        Bullet bullet = collision.GetComponent<Bullet>();
+        
+        if (bullet != null)
         {
             Destroy(gameObject);
+            Destroy(bullet.gameObject);
         }
-
-        transform.position = pos;    
     }
 }
