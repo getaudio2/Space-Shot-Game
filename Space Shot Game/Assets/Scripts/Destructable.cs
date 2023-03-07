@@ -18,12 +18,15 @@ public class Destructable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) 
     {
-        Bullet bullet = collision.GetComponent<Bullet>();
+        Bullet bullet;
+        bullet = collision.gameObject.GetComponent<Bullet>();
+        Debug.Log(bullet);
         
         if (bullet != null)
         {
             Destroy(gameObject);
             Destroy(bullet.gameObject);
+            Debug.Log("enemy hit");
         }
     }
 }
