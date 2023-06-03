@@ -7,6 +7,9 @@ public class ShipMovement : MonoBehaviour
     public Bullet bullet;
     public AudioSource shotSound;
 
+    public float fireRate = 0.5f;
+    private float nextFire = 0.0f;
+
     float moveSpeed = 10;
 
     bool moveUp;
@@ -14,14 +17,6 @@ public class ShipMovement : MonoBehaviour
     bool moveLeft;
     bool moveRight;
     bool slowDown;
-
-    bool shoot;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -31,8 +26,11 @@ public class ShipMovement : MonoBehaviour
         moveLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
         moveRight = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
         slowDown = Input.GetKey(KeyCode.LeftShift);
-        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
+
+        if ((Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return)) 
+            && Time.time > nextFire)
         {
+            nextFire = Time.time + fireRate;
             Instantiate(this.bullet, transform.position, Quaternion.identity);
             shotSound.Play();
         }
