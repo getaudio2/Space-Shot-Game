@@ -35,4 +35,9 @@ public class Bullet : MonoBehaviour
 
         transform.position = pos;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Destroy(this.gameObject);
+    }
 }
