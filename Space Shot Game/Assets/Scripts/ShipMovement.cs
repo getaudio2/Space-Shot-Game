@@ -31,7 +31,7 @@ public class ShipMovement : MonoBehaviour
         moveLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
         moveRight = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
         slowDown = Input.GetKey(KeyCode.LeftShift);
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
         {
             Instantiate(this.bullet, transform.position, Quaternion.identity);
             shotSound.Play();
