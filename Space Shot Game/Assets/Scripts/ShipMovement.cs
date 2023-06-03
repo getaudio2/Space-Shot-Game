@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
-    Gun[] guns;
+    public Bullet bullet;
 
     float moveSpeed = 10;
 
@@ -19,7 +19,7 @@ public class ShipMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        guns = transform.GetComponentsInChildren<Gun>();
+        
     }
 
     // Update is called once per frame
@@ -30,14 +30,9 @@ public class ShipMovement : MonoBehaviour
         moveLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
         moveRight = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
         slowDown = Input.GetKey(KeyCode.LeftShift);
-        shoot = Input.GetKeyDown(KeyCode.Z);
-        if (shoot)
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            shoot = false;
-            foreach(Gun gun in guns)
-            {
-                gun.Shoot();
-            }
+            Instantiate(this.bullet, transform.position, Quaternion.identity);
         }
     }
 
