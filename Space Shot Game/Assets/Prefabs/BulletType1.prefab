@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 1, y: 0}
   speed: 11
+  explosionPrefab: {fileID: 5833404943794320264, guid: ca498897d15fe0141ad3a82cd57dad6f, type: 3}
   velocity: {x: 0, y: 0}
 --- !u!50 &1310614762696312162
 Rigidbody2D:

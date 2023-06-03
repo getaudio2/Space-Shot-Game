@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
 
     public Vector2 direction = new Vector2(1,0);
     public float speed = 11;
+    public GameObject explosionPrefab;
 
     public Vector2 velocity;
 
@@ -38,6 +39,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 }
