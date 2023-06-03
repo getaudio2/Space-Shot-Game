@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShipMovement : MonoBehaviour
 {
     public Bullet bullet;
+    public AudioSource shotSound;
 
     float moveSpeed = 10;
 
@@ -33,6 +34,7 @@ public class ShipMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             Instantiate(this.bullet, transform.position, Quaternion.identity);
+            shotSound.Play();
         }
     }
 
