@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
     public Vector2 direction = new Vector2(1,0);
     public float speed = 11;
     public GameObject explosionPrefab;
+    private ControlPuntos controlPuntos;
 
     public Vector2 velocity;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
+    void Start() {
+        controlPuntos = GameObject.Find("ControlPuntos").GetComponent<ControlPuntos>();
     }
 
     // Update is called once per frame
@@ -39,7 +37,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+            controlPuntos.UpdateScore(50);
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
     }
 }

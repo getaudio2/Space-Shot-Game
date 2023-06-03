@@ -6,6 +6,7 @@ public class ShipMovement : MonoBehaviour
 {
     public Bullet bullet;
     public AudioSource shotSound;
+    public GameObject explosionPrefab;
 
     public float fireRate = 0.5f;
     private float nextFire = 0.0f;
@@ -33,6 +34,14 @@ public class ShipMovement : MonoBehaviour
             nextFire = Time.time + fireRate;
             Instantiate(this.bullet, transform.position, Quaternion.identity);
             shotSound.Play();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
         }
     }
 
