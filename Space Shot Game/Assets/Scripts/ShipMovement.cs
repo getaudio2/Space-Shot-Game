@@ -7,6 +7,10 @@ public class ShipMovement : MonoBehaviour
     public Bullet bullet;
     public AudioSource shotSound;
     public GameObject explosionPrefab;
+    public AudioSource musica;
+    
+    public GameObject gameOverMenu;
+    public ControlPuntos controlPuntos;
 
     public float fireRate = 0.5f;
     private float nextFire = 0.0f;
@@ -40,6 +44,11 @@ public class ShipMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+            Time.timeScale = 0;
+            gameOverMenu.SetActive(true);
+            controlPuntos.HighScoreUpdate();
+            musica.Stop();
+
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }

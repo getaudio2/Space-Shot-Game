@@ -6,6 +6,7 @@ public class MenuPausa : MonoBehaviour
 {
     private bool isPaused;
     public GameObject menuPausa;
+    public AudioSource musica;
 
     // Update is called once per frame
     void Update()
@@ -24,6 +25,7 @@ public class MenuPausa : MonoBehaviour
         Time.timeScale = 0;
         isPaused = true;
         menuPausa.SetActive(true);
+        musica.Pause();
     }
 
     public void ResumeGame()
@@ -31,5 +33,6 @@ public class MenuPausa : MonoBehaviour
         Time.timeScale = 1;
         isPaused = false;
         menuPausa.SetActive(false);
+        musica.Play();
     }
 }
